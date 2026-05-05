@@ -1,12 +1,13 @@
 #!/bin/bash
-# Compiles Highlighter.swift into Highlighter.app.
+# Compiles HighlightAnything.swift into HighlightAnything.app.
 # Requires macOS 14+ (uses ScreenCaptureKit's SCScreenshotManager).
 set -e
 
-APP_NAME="Highlighter"
-BUNDLE_ID="local.highlighter"
+APP_NAME="HighlightAnything"
+DISPLAY_NAME="Highlight Anything"
+BUNDLE_ID="local.highlightanything"
 APP_DIR="${APP_NAME}.app"
-SRC="Highlighter.swift"
+SRC="HighlightAnything.swift"
 
 if ! command -v swiftc >/dev/null 2>&1; then
   echo "ERROR: swiftc not found. Install Xcode Command Line Tools:"
@@ -34,8 +35,8 @@ cat > "${APP_DIR}/Contents/Info.plist" <<EOF
 <dict>
   <key>CFBundleExecutable</key><string>${APP_NAME}</string>
   <key>CFBundleIdentifier</key><string>${BUNDLE_ID}</string>
-  <key>CFBundleName</key><string>${APP_NAME}</string>
-  <key>CFBundleDisplayName</key><string>${APP_NAME}</string>
+  <key>CFBundleName</key><string>${DISPLAY_NAME}</string>
+  <key>CFBundleDisplayName</key><string>${DISPLAY_NAME}</string>
   <key>CFBundleVersion</key><string>3.0</string>
   <key>CFBundleShortVersionString</key><string>3.0</string>
   <key>CFBundlePackageType</key><string>APPL</string>
@@ -53,4 +54,4 @@ echo "Done. Launch with:"
 echo "    open ${APP_DIR}"
 echo
 echo "First launch will prompt for Accessibility AND Screen Recording."
-echo "Enable Highlighter in BOTH panes, then quit (📋 → Quit) and relaunch."
+echo "Enable ${DISPLAY_NAME} in BOTH panes, then quit (📋 → Quit) and relaunch."

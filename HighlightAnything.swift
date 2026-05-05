@@ -1,4 +1,4 @@
-// Highlighter.swift — shift-drag, OCR, copy.
+// HighlightAnything.swift — shift-drag, OCR, copy.
 //
 // Hold Shift, drag a rectangle over anything on screen. The region is captured
 // via ScreenCaptureKit, run through Vision OCR, and the result lands on your
@@ -196,7 +196,7 @@ enum ScreenCapture {
         )
 
         guard let display = content.displays.first(where: { $0.frame.intersects(cgRect) }) else {
-            throw NSError(domain: "Highlighter", code: 1, userInfo: [
+            throw NSError(domain: "HighlightAnything", code: 1, userInfo: [
                 NSLocalizedDescriptionKey: "No display contains the selected region"
             ])
         }
@@ -288,11 +288,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate, CaptureViewDelegate {
         guard !missing.isEmpty else { return }
 
         let alert = NSAlert()
-        alert.messageText = "Highlighter needs two permissions"
+        alert.messageText = "Highlight Anything needs two permissions"
         alert.informativeText = """
         • \(missing.joined(separator: "\n• "))
 
-        Click Open Settings, enable Highlighter in BOTH panes (Accessibility AND Screen Recording), then quit Highlighter from the 📋 menu and relaunch.
+        Click Open Settings, enable Highlight Anything in BOTH panes (Accessibility AND Screen Recording), then quit Highlight Anything from the 📋 menu and relaunch.
         """
         alert.alertStyle = .warning
         alert.addButton(withTitle: "Open Accessibility")
@@ -347,7 +347,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, CaptureViewDelegate {
         addItem(menu, "Open Accessibility Settings", #selector(openAccessibilityMenu))
         addItem(menu, "Open Screen Recording Settings", #selector(openScreenRecordingMenu))
         menu.addItem(.separator())
-        menu.addItem(NSMenuItem(title: "Quit Highlighter",
+        menu.addItem(NSMenuItem(title: "Quit Highlight Anything",
                                 action: #selector(NSApplication.terminate(_:)),
                                 keyEquivalent: "q"))
         statusItem.menu = menu
