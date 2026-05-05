@@ -70,7 +70,7 @@ final class ToastWindow: NSWindow {
     override var canBecomeKey: Bool { false }
     override var canBecomeMain: Bool { false }
 
-    func show(_ message: String, duration: TimeInterval = 1.6) {
+    func show(_ message: String, duration: TimeInterval = 4.8) {
         label.stringValue = message
         guard let screen = NSScreen.main else { return }
         let f = self.frame
@@ -135,12 +135,6 @@ final class CaptureView: NSView {
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
-        if armed {
-            NSColor.systemBlue.withAlphaComponent(0.55).setStroke()
-            let p = NSBezierPath(rect: bounds.insetBy(dx: 3, dy: 3))
-            p.lineWidth = 4
-            p.stroke()
-        }
         if let r = currentRect {
             NSColor.systemBlue.withAlphaComponent(0.18).setFill()
             NSBezierPath(rect: r).fill()

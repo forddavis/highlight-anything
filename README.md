@@ -27,7 +27,7 @@ After enabling both, quit from the 📋 menu bar item and relaunch.
 
 ## Usage
 
-1. Hold **Shift**. The menu bar icon flips to ✂️ and a blue border appears around each screen.
+1. Hold **Shift**. The menu bar icon flips to ✂️.
 2. Drag a rectangle over the text you want.
 3. Release. The text is on your clipboard and a toast shows a preview.
 
